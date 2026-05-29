@@ -1,0 +1,370 @@
+:root {
+  --bg-0: #07090d;
+  --bg-1: #111a1f;
+  --bg-2: #231827;
+  --text: #f6f3ec;
+  --card: rgba(255, 255, 255, 0.1);
+  --card-strong: rgba(255, 255, 255, 0.16);
+  --border: rgba(255, 255, 255, 0.18);
+  --shadow: rgba(0, 0, 0, 0.34);
+  --teal: #54d6c6;
+  --amber: #f6bd62;
+  --rose: #e57aa1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 520px;
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(84, 214, 198, 0.12), transparent 26%),
+    radial-gradient(circle at 78% 22%, rgba(160, 126, 255, 0.13), transparent 27%),
+    radial-gradient(circle at 62% 78%, rgba(229, 122, 161, 0.1), transparent 28%),
+    linear-gradient(180deg, #01030a 0%, #040814 48%, #080b17 76%, #100d1b 100%);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.54), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.54)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 42%, rgba(0, 0, 0, 0.28));
+  position: fixed;
+  inset: 0;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 28%, rgba(255, 255, 255, 0.06), transparent 42%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.62), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.62)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 46%, rgba(0, 0, 0, 0.38));
+  pointer-events: none;
+}
+
+.star-canvas {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lab-banner {
+  width: 100%;
+  height: 80vh;
+  height: 80dvh;
+  min-height: 0;
+  padding: clamp(18px, 4vh, 42px) 16px clamp(12px, 3vh, 28px);
+  background: transparent;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+}
+
+.lab-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 58%, rgba(0, 0, 0, 0.14)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.014) 0 1px, transparent 1px 20px);
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.lab-banner::after {
+  content: "";
+  height: 42%;
+  position: absolute;
+  inset: auto 0 -12%;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(4, 8, 16, 0.86), transparent 62%),
+    linear-gradient(180deg, transparent 0%, rgba(2, 5, 13, 0.32) 62%, rgba(2, 5, 13, 0.78) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pixel-canvas {
+  width: min(1180px, 100%);
+  max-height: calc(80vh - 54px);
+  max-height: calc(80dvh - 54px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.12));
+  position: relative;
+  z-index: 2;
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.page-shell {
+  width: 100%;
+  height: 20vh;
+  height: 20dvh;
+  min-height: 0;
+  flex: 0 0 20vh;
+  flex-basis: 20dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 1.8vh, 16px) 20px clamp(10px, 2vh, 18px);
+  background:
+    linear-gradient(180deg, rgba(2, 5, 13, 0.24), rgba(2, 5, 13, 0.48) 48%, rgba(6, 8, 16, 0.68)),
+    linear-gradient(90deg, transparent, rgba(84, 214, 198, 0.035), rgba(160, 126, 255, 0.035), transparent);
+  position: relative;
+  z-index: 1;
+}
+
+.page-shell::before {
+  content: "";
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  inset: -42px auto auto 0;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(2, 5, 13, 0.72), transparent 66%),
+    linear-gradient(180deg, transparent, rgba(2, 5, 13, 0.6));
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.page-shell::after {
+  content: "";
+  width: min(360px, 58vw);
+  height: 18px;
+  position: absolute;
+  inset: 4px auto auto 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08), transparent 68%);
+  transform: translateX(-50%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hero {
+  width: min(920px, 100%);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(22px, 5vw, 54px);
+  width: min(520px, 100%);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.service-link {
+  --service-size: clamp(72px, 13vh, 112px);
+  --service-size: clamp(72px, 13dvh, 112px);
+  --intro-y: 12px;
+  --hover-lift: 0px;
+  --wobble-x: 0px;
+  --wobble-y: 0px;
+  --wobble-rotate: 0deg;
+  --wobble-scale: 1;
+  width: var(--service-size);
+  height: var(--service-size);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  background: rgba(8, 11, 14, 0.58);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  position: relative;
+  transform:
+    translate3d(var(--wobble-x), calc(var(--intro-y) + var(--hover-lift) + var(--wobble-y)), 0)
+    rotate(var(--wobble-rotate))
+    scale(var(--wobble-scale));
+  will-change: transform;
+  opacity: 0;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    opacity 520ms ease;
+}
+
+.service-link::before {
+  content: "";
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.service-link::after {
+  content: "";
+  width: 52%;
+  height: 1px;
+  position: absolute;
+  inset: auto auto -7px 50%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.26), transparent);
+  transform: translateX(-50%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.is-ready .service-link {
+  --intro-y: 0px;
+  opacity: 1;
+}
+
+.is-ready .service-link:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.service-link:hover,
+.service-link:focus-visible {
+  --hover-lift: -2px;
+  border-color: rgba(255, 255, 255, 0.44);
+  box-shadow:
+    0 13px 30px rgba(0, 0, 0, 0.28),
+    0 0 0 3px rgba(84, 214, 198, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.service-link.is-wobbling {
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    opacity 520ms ease;
+}
+
+.service-link--overleaf:hover,
+.service-link--overleaf:focus-visible {
+  box-shadow:
+    0 13px 30px rgba(0, 0, 0, 0.28),
+    0 0 0 3px rgba(246, 189, 98, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.service-link:focus-visible {
+  outline: 3px solid rgba(84, 214, 198, 0.42);
+  outline-offset: 4px;
+}
+
+.service-link--overleaf:focus-visible {
+  outline-color: rgba(246, 189, 98, 0.45);
+}
+
+.service-icon-circle {
+  width: 68%;
+  height: 68%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: rgba(245, 247, 244, 0.96);
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.service-icon-image {
+  width: 86%;
+  height: 86%;
+  display: block;
+  object-fit: contain;
+}
+
+.service-link--overleaf .service-icon-image {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+
+.site-footer {
+  padding: 0 20px 28px;
+  color: rgba(246, 243, 236, 0.58);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .lab-banner {
+    height: 80vh;
+    height: 80dvh;
+    padding: 18px 12px 12px;
+  }
+
+  .page-shell {
+    height: 20vh;
+    height: 20dvh;
+    padding: 8px 12px 12px;
+  }
+
+  .service-grid {
+    gap: 20px;
+  }
+
+  .service-link {
+    --service-size: clamp(70px, 12dvh, 96px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
