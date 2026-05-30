@@ -62,11 +62,11 @@ sudo systemctl reload nginx
 当前占位链接：
 
 ```html
-<a class="service-link service-link--fnos" href="http://nas2.utlab.ltd:5666/">
+<a class="service-link service-link--fnos" href="/fnos/">
 ```
 
 ```html
-<a class="service-link service-link--overleaf" href="http://nas2.utlab.ltd/overleaf">
+<a class="service-link service-link--overleaf" href="/overleaf/">
 ```
 
 把 `href` 后面的地址替换成你的实际服务地址即可。
